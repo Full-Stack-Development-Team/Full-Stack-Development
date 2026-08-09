@@ -20,7 +20,6 @@ export default function TaskModal({ isOpen, onClose, onAddTask }) {
       priority,
     });
 
-    // Reset fields and close modal
     setTitle('');
     setDescription('');
     setStatus('todo');
@@ -57,7 +56,6 @@ export default function TaskModal({ isOpen, onClose, onAddTask }) {
           <div className="form-row">
             <div className="form-group">
               <label>Status</label>
-              value={status} onChange={(e) => setStatus(e.target.value)}
               <select value={status} onChange={(e) => setStatus(e.target.value)}>
                 <option value="todo">To Do</option>
                 <option value="doing">In Progress</option>

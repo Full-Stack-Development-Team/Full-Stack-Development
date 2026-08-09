@@ -4,7 +4,7 @@ import Column from './Column';
 
 export default function Board() {
   const [tasks, setTasks] = useState([
-    { id: 1, title: 'Setup Database ER Diagram', description: 'Collaborate with Maduka on table schemas.', status: 'todo', priority: 'high' },
+    { id: 1, title: 'Setup Database ER Diagram', description: 'Define table schemas and relationships.', status: 'todo', priority: 'high' },
     { id: 2, title: 'Build React Dashboard', description: 'Create task card components and layout.', status: 'doing', priority: 'medium' },
     { id: 3, title: 'Initialize Repository', description: 'Push initial folder structures to GitHub.', status: 'done', priority: 'low' },
   ]);
