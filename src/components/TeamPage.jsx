@@ -7,7 +7,7 @@ export default function TeamPage() {
       <p className="auth-subtitle">Collaborators working on this full-stack application.</p>
       
       <ul className="team-list">
-        <li>👤 Nimuthu Sanira (Lead Frontend Developer)</li>
+        <li>👤 Nimuthu Sanira (nothing to say)</li>
         
       </ul>
     </div>
