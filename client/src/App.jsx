@@ -1,26 +1,43 @@
 import React, { useState } from 'react';
-import Board from './components/Board';
 import Login from './components/Login';
 import Register from './components/Register';
+import Navbar from './components/Navbar';
+import Board from './components/Board';
+import AnalyticsPage from './components/AnalyticsPage';
+import TeamPage from './components/TeamPage';
 import './index.css';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentView, setCurrentView] = useState('login');
+  const [currentAuthView, setCurrentAuthView] = useState('login');
+  const [activePage, setActivePage] = useState('board');
 
   if (!isAuthenticated) {
-    return currentView === 'login' ? (
+    return currentAuthView === 'login' ? (
       <Login 
-        onSwitchToRegister={() => setCurrentView('register')} 
+        onSwitchToRegister={() => setCurrentAuthView('register')} 
         onLoginSuccess={() => setIsAuthenticated(true)} 
       />
     ) : (
       <Register 
-        onSwitchToLogin={() => setCurrentView('login')} 
+        onSwitchToLogin={() => setCurrentAuthView('login')} 
         onRegisterSuccess={() => setIsAuthenticated(true)} 
       />
     );
   }
 
-  return <Board onLogout={() => setIsAuthenticated(false)} />;
+  return (
+    <div className="app-layout">
+      <Navbar 
+        activePage={activePage} 
+        setActivePage={setActivePage} 
+        onLogout={() => setIsAuthenticated(false)} 
+      />
+      <main className="main-content">
+        {activePage === 'board' && <Board />}
+        {activePage === 'analytics' && <AnalyticsPage />}
+        {activePage === 'team' && <TeamPage />}
+      </main>
+    </div>
+  );
 }
