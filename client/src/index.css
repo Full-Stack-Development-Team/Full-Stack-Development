@@ -313,3 +313,7 @@ body {
 .link-btn:hover {
   text-decoration: underline;
 }
+.task-actions {
+  display: flex;
+  gap: 8px; 
+}

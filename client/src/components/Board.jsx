@@ -10,6 +10,7 @@ export default function Board({ onLogout }) {
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState(null);
 
   const columns = [
     { key: 'todo', title: 'To Do' },
@@ -17,8 +18,17 @@ export default function Board({ onLogout }) {
     { key: 'done', title: 'Completed' },
   ];
 
-  const handleAddTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+  const handleSaveTask = (newTask) => {
+    if (editingTask) {
+      setTasks(tasks.map(t => t.id === editingTask.id ? { ...newTask, id: t.id, status: t.status } : t));
+      setEditingTask(null);
+    } else {
+      setTasks([...tasks, newTask]);
+    }
+  };
+
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks.filter(t => t.id !== taskId));
   };
 
   const handleDropTask = (taskId, newStatus) => {
@@ -35,7 +45,7 @@ export default function Board({ onLogout }) {
           <p>University Full Stack Development Project</p>
         </div>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+          <button className="btn-primary" onClick={() => { setEditingTask(null); setIsModalOpen(true); }}>
             + Add New Task
           </button>
           <button className="btn-cancel" onClick={onLogout}>
@@ -53,6 +63,8 @@ export default function Board({ onLogout }) {
               column={col} 
               tasks={colTasks} 
               onDropTask={handleDropTask}
+              onEditTask={(task) => { setEditingTask(task); setIsModalOpen(true); }}
+              onDeleteTask={handleDeleteTask}
             />
           );
         })}
@@ -60,8 +72,9 @@ export default function Board({ onLogout }) {
 
       <TaskModal 
         isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        onAddTask={handleAddTask} 
+        onClose={() => { setIsModalOpen(false); setEditingTask(null); }} 
+        onAddTask={handleSaveTask} 
+        initialData={editingTask}
       />
     </div>
   );
