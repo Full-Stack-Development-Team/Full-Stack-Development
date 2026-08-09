@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TaskModal from './TaskModal';
+import Column from './Column';
 
 export default function Board() {
-  // Sample mockup tasks to visualize the styling
-  const tasks = [
+  const [tasks, setTasks] = useState([
     { id: 1, title: 'Setup Database ER Diagram', description: 'Collaborate with Maduka on table schemas.', status: 'todo', priority: 'high' },
     { id: 2, title: 'Build React Dashboard', description: 'Create task card components and layout.', status: 'doing', priority: 'medium' },
     { id: 3, title: 'Initialize Repository', description: 'Push initial folder structures to GitHub.', status: 'done', priority: 'low' },
-  ];
+  ]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const columns = [
     { key: 'todo', title: 'To Do' },
@@ -14,38 +17,40 @@ export default function Board() {
     { key: 'done', title: 'Completed' },
   ];
 
+  const handleAddTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
+
   return (
     <div className="board-container">
       <div className="board-header">
-        <h1>Team Collaboration Board</h1>
-        <p>University Full Stack Development Project</p>
+        <div>
+          <h1>Team Collaboration Board</h1>
+          <p>University Full Stack Development Project</p>
+        </div>
+        <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+          + Add New Task
+        </button>
       </div>
 
       <div className="columns-wrapper">
         {columns.map(col => {
           const colTasks = tasks.filter(t => t.status === col.key);
           return (
-            <div className="column" key={col.key}>
-              <div className="column-title">
-                <span>{col.title}</span>
-                <span className="badge badge-low">{colTasks.length}</span>
-              </div>
-
-              {colTasks.map(task => (
-                <div className="task-card" key={task.id}>
-                  <div className="task-title">{task.title}</div>
-                  <div className="task-desc">{task.description}</div>
-                  <div className="task-footer">
-                    <span className={`badge badge-${task.priority}`}>
-                      {task.priority}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Column 
+              key={col.key} 
+              column={col} 
+              tasks={colTasks} 
+            />
           );
         })}
       </div>
+
+      <TaskModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onAddTask={handleAddTask} 
+      />
     </div>
   );
 }
