@@ -21,6 +21,12 @@ export default function Board() {
     setTasks([...tasks, newTask]);
   };
 
+  const handleDropTask = (taskId, newStatus) => {
+    setTasks(tasks.map(task => 
+      task.id === taskId ? { ...task, status: newStatus } : task
+    ));
+  };
+
   return (
     <div className="board-container">
       <div className="board-header">
@@ -41,6 +47,7 @@ export default function Board() {
               key={col.key} 
               column={col} 
               tasks={colTasks} 
+              onDropTask={handleDropTask}
             />
           );
         })}
