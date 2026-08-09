@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TaskModal from './TaskModal';
 import Column from './Column';
 
-export default function Board() {
+export default function Board({ onLogout }) {
   const [tasks, setTasks] = useState([
     { id: 1, title: 'Setup Database ER Diagram', description: 'Define table schemas and relationships.', status: 'todo', priority: 'high' },
     { id: 2, title: 'Build React Dashboard', description: 'Create task card components and layout.', status: 'doing', priority: 'medium' },
@@ -34,9 +34,14 @@ export default function Board() {
           <h1>Team Collaboration Board</h1>
           <p>University Full Stack Development Project</p>
         </div>
-        <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
-          + Add New Task
-        </button>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+            + Add New Task
+          </button>
+          <button className="btn-cancel" onClick={onLogout}>
+            Sign Out
+          </button>
+        </div>
       </div>
 
       <div className="columns-wrapper">

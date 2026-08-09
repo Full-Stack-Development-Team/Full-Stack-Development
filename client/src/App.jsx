@@ -22,5 +22,5 @@ export default function App() {
     );
   }
 
-  return <Board />;
+  return <Board onLogout={() => setIsAuthenticated(false)} />;
 }
