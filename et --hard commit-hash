@@ -1,0 +1,15 @@
+[33m25d4c79[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/rupasinghe[m[33m, [m[1;31morigin/dev[m[33m)[m Complete Part 1: Server setup and database connection
+[33m9a0ded3[m Complete backend setup, authentication, and API routes for Part 2
+[33mcd377cc[m add wrangler package and json
+[33mc20b456[m deleting client folder
+[33md43f3dd[m[33m ([m[1;31morigin/feat/dashboard-pages[m[33m, [m[1;32mfeat/dashboard-pages[m[33m)[m feat: add dashboard navbar, analytics page with progress chart, and team page
+[33mad69b55[m[33m ([m[1;31morigin/feat/task-edit-delete[m[33m, [m[1;32mfeat/task-edit-delete[m[33m)[m feat: update and delete buttons and implement task editing
+[33m2e69e69[m feat: add sign out button and logout handler to board header
+[33m2908dc1[m[33m ([m[1;31morigin/feat/auth[m[33m, [m[1;32mfeat/auth[m[33m)[m feat: add user authentication login and registration screens
+[33m4a28522[m[33m ([m[1;31morigin/feat/drag-and-drop[m[33m, [m[1;32mfeat/drag-and-drop[m[33m)[m feat: implement HTML5 drag and drop for task cards
+[33m34e6965[m[33m ([m[1;31morigin/feat/taskcard[m[33m, [m[1;32mfeat/taskcard[m[33m)[m refactor: update task description
+[33m9ece486[m feat: add task modal and dark blue theme UI components
+[33mc41b17c[m style: apply dark blue theme to task board
+[33mf2bc9dd[m Add static Kanban board UI and components for Milestone 1
+[33mec159c2[m Add task card component
+[33mcea09b6[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature/m1-frontend[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/m1-frontend[m[33m)[m Initial commit
